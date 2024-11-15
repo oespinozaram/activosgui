@@ -1,0 +1,55 @@
+object dm: Tdm
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 299
+  HorizontalOffset = 603
+  VerticalOffset = 319
+  Width = 389
+  object conn: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'C:\Source\Laz\activos.db'
+    KeepConnection = False
+    Transaction = sqlt
+    AlwaysUseBigint = False
+    Left = 24
+    Top = 16
+  end
+  object qry_search: TSQLQuery
+    FieldDefs = <>
+    Database = conn
+    Transaction = sqlt
+    SQL.Strings = (
+      ''
+    )
+    Params = <>
+    Macros = <>
+    Left = 72
+    Top = 40
+  end
+  object sqlt: TSQLTransaction
+    Active = False
+    Action = caCommit
+    Database = conn
+    Left = 120
+    Top = 8
+  end
+  object qry_result: TSQLQuery
+    FieldDefs = <>
+    Database = conn
+    Transaction = sqlt
+    SQL.Strings = (
+      'SELECT * FROM tbl_activos'
+      'WHERE num_expediente = :numexp'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'numexp'
+        ParamType = ptInput
+      end>
+    Macros = <>
+    Left = 104
+    Top = 104
+  end
+end

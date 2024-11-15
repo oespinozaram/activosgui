@@ -1,0 +1,5 @@
+backup
+lib
+.DS_Store
+*.exe
+*.db
